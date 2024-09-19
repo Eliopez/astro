@@ -1,16 +1,24 @@
 ---
+import Navbar from "../components/Navbar.astro"
+import MainLayout from "../layouts/Mainlayout.astro" // Corrected import
 
+//Server side Only - created in build
+const name = 'David Hernandez'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Navbar/>
+<MainLayout/>
+<h1>Astro</h1>
+<h4>˚{name}˚</h4>
+
+<p>Momento Creacion :{ new Date().toLocaleTimeString()}</p>
+<p id="current-time">Momento Actual : </p>
+<footer>
+ <p>&copy; 2022 Astro</p>
+</footer>
+<script>
+//Client side only - once is running
+const currentTimeParagraph = document.querySelector('#current-time') as HTMLParagraphElement;
+currentTimeParagraph.innerText= `Momento actual real: ${new Date().toLocaleTimeString()}`;
+
+</script>
